@@ -1,0 +1,48 @@
+Tarefas a Realizar:
+
+1. Desenvolvimento do TAD imageBW
+    Analisar os ficheiros fornecidos:
+        imageBW.h (interface - não deve ser alterado).
+        imageBW.c (implementação - completar funções inacabadas).
+
+    Completar as funções especificadas no ficheiro de interface (imageBW.h), com base nas pré e pós-condições indicadas.
+    Desenvolver funções auxiliares (static), caso necessário, no ficheiro imageBW.c.
+    Testar todas as funções usando os programas de teste fornecidos.
+    Garantir a clareza e a documentação do código, incluindo comentários e identificadores apropriados.
+
+2. Análise de Memória — Função ImageCreateChessboard()
+    Criar imagens com diferentes tamanhos e padrões de xadrez, variando:
+        Número de linhas (m).
+        Número de colunas (n).
+        Comprimento do lado dos quadrados (s).
+    Registar as características das imagens criadas e calcular:
+        O número de runs em cada imagem.
+        O espaço total de memória ocupado.
+    Derivar expressões formais para o número de runs e o espaço de memória ocupado.
+    Determinar:
+        O padrão de xadrez com menos runs e quantos são.
+        O padrão de xadrez com mais runs e quantos são.
+
+3. Análise da Complexidade — Função ImageAND()
+    Realizar testes computacionais com imagens de diferentes tamanhos:
+        Registar o número de operações realizadas envolvendo os valores dos pixels.
+        Efetuar uma análise formal da complexidade do algoritmo desenvolvido.
+    Comparar estratégias algorítmicas diferentes para a função ImageAND():
+        Algoritmo básico.
+        Algoritmo melhorado.
+
+4. Relatório
+    Elaborar um relatório [MÁXIMO 6 PÁGINAS], incluindo:
+        Resultados dos testes das funções analisadas (ImageCreateChessboard() e ImageAND()).
+        Análise formal da complexidade das funções.
+        Comparação de estratégias algorítmicas para ImageAND().
+        Apresentação geral e conclusões.
+
+
+5. Entrega
+    Submeter apenas o ficheiro imageBW.c, devidamente identificado com o(s) autor(es).
+
+6. Avaliação Entre Pares [Coisas a fazer depois de entregar o nosso projeto]
+    Testar e avaliar a qualidade do código de 2 colegas.
+    Avaliar funcionamento, clareza do código e comentários.
+    Verificar a existência de fugas de memória.
