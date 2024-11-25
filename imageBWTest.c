@@ -38,7 +38,6 @@ int main(int argc, char* argv[]) {
   ImageRAWPrint(image_1);
 
   Image chessboard = ImageCreateChessboard(8, 8, 2, WHITE);
-  ImageRLEPrint(chessboard);
   ImageRAWPrint(chessboard);
 
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS

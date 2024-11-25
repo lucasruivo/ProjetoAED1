@@ -11,10 +11,10 @@
 /// 2024
 
 // Student authors (fill in below):
-// NMec:
-// Name:
-// NMec:
-// Name:
+// NMec: 118849
+// Name: Lucas Ruivo
+// NMec: 119773
+// Name: Tiago Mendes
 //
 // Date:
 //
