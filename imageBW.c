@@ -266,10 +266,30 @@ Image ImageCreate(uint32 width, uint32 height, uint8 val) {
 /// (The caller is responsible for destroying the returned image!)
 Image ImageCreateChessboard(uint32 width, uint32 height, uint32 square_edge,
                             uint8 first_value) {
-  // COMPLETE THE CODE
-  // ...
-
-  return NULL;
+  assert(width == height);
+  assert(width > 0 && height > 0 && square_edge > 0);
+  assert(width % square_edge == 0 && height % square_edge == 0);
+  assert(first_value == WHITE || first_value == BLACK);
+  // Create an image filled with the first_value
+  Image chessboard = AllocateImageHeader(width, height);
+  // Start with the value inserted as the one to start with
+  uint8 pixel_value;
+  uint32 index;
+  for (uint32 i = 0; i < height; i++) {
+    chessboard->row[i] = AllocateRLERowArray(((width/square_edge))+2);
+    // Set the value of the pixel that starts the row
+    pixel_value = first_value ^ ((i / square_edge) % 2);
+    chessboard->row[i][0] = pixel_value;
+    // Set index variable to 1 and increment it after using it in the array to set the
+    // ammount of pixel value changes in the row 
+    index = 1;
+    for ( int j = 0; j < width; j += square_edge) {
+      chessboard->row[i][index++] = square_edge;
+    }
+    // Finish creating the row with the End Of Row marker
+    chessboard->row[i][index] = EOR;
+  }
+  return chessboard;
 }
 
 /// Destroy the image pointed to by (*imgp).

@@ -37,6 +37,10 @@ int main(int argc, char* argv[]) {
   Image image_1 = ImageNEG(white_image);
   ImageRAWPrint(image_1);
 
+  Image chessboard = ImageCreateChessboard(8, 8, 2, WHITE);
+  ImageRLEPrint(chessboard);
+  ImageRAWPrint(chessboard);
+
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);
@@ -85,6 +89,7 @@ int main(int argc, char* argv[]) {
   ImageDestroy(&white_image);
   ImageDestroy(&black_image);
   ImageDestroy(&image_1);
+  ImageDestroy(&chessboard);
 
   /*** UNCOMMENT IF YOU CREATE THOSE IMAGES
 
