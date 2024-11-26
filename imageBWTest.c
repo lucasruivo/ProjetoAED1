@@ -40,7 +40,8 @@ int main(int argc, char* argv[]) {
   Image chessboard = ImageCreateChessboard(8, 8, 2, WHITE);
   ImageRAWPrint(chessboard);
 
-  printf("%d\n", ImageIsEqual(black_image, image_1));
+  printf("The pictures \"black_image\" and \"image_1\" are equal if 0 == %d\n", ImageIsEqual(black_image, image_1));
+  printf("The pictures \"black_image\" and \"white_image\" are different if 1 == %d\n", ImageIsEqual(black_image, white_image));
 
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 

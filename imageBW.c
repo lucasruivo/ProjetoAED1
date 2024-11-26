@@ -496,7 +496,7 @@ int ImageIsEqual(const Image img1, const Image img2) {
     return 1;
   } else {
     for (int i = 0; i < img1->height; i++) {
-      for (int j = 0; j < GetSizeRLERowArray(img1->row[0])+1; j++) {
+      for (int j = 0; j < GetSizeRLERowArray(img1->row[0]); j++) {
         if (img1->row[i][j] != img2->row[i][j]) {
           return 1;
         }
