@@ -40,6 +40,8 @@ int main(int argc, char* argv[]) {
   Image chessboard = ImageCreateChessboard(8, 8, 2, WHITE);
   ImageRAWPrint(chessboard);
 
+  printf("%d\n", ImageIsEqual(black_image, image_1));
+
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);

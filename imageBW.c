@@ -490,10 +490,20 @@ int ImageHeight(const Image img) {
 
 int ImageIsEqual(const Image img1, const Image img2) {
   assert(img1 != NULL && img2 != NULL);
-
+  if (GetSizeRLERowArray(img1->row[0]) != GetSizeRLERowArray(img2->row[0])) {
+    return 1;
+  } else if ((img1->height != img2->height) || (img1->width != img2->width)) {
+    return 1;
+  } else {
+    for (int i = 0; i < img1->height; i++) {
+      for (int j = 0; j < GetSizeRLERowArray(img1->row[0])+1; j++) {
+        if (img1->row[i][j] != img2->row[i][j]) {
+          return 1;
+        }
+      }
+    }
+  }
   // COMPLETE THE CODE
-  // ...
-
   return 0;
 }
 
