@@ -41,8 +41,16 @@ int main(int argc, char* argv[]) {
   ImageRAWPrint(chessboard);
 
   printf("The pictures \"black_image\" and \"image_1\" are equal if 0 == %d\n", ImageIsEqual(black_image, image_1));
-  printf("The pictures \"black_image\" and \"white_image\" are different if 1 == %d\n", ImageIsEqual(black_image, white_image));
+  printf("The pictures \"black_image\" and \"white_image\" are different if 1 == %d\n\n", ImageIsEqual(black_image, white_image));
 
+  Image image_3 = ImageAND(white_image, image_1);
+  ImageRAWPrint(image_3);
+  Image image_4 = ImageAND(black_image, image_1);
+  ImageRAWPrint(image_4);
+  Image image_5 = ImageAND(chessboard, image_1);
+  ImageRAWPrint(image_5);
+  
+  
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);

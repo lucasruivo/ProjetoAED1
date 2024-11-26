@@ -490,15 +490,17 @@ int ImageHeight(const Image img) {
 
 int ImageIsEqual(const Image img1, const Image img2) {
   assert(img1 != NULL && img2 != NULL);
-  if (GetSizeRLERowArray(img1->row[0]) != GetSizeRLERowArray(img2->row[0])) {
+  // First, check if either the image's heights are different or not, if so, return 1
+   if ((img1->height != img2->height) || (img1->width != img2->width)) {
     return 1;
-  } else if ((img1->height != img2->height) || (img1->width != img2->width)) {
-    return 1;
+  } else if (GetSizeRLERowArray(img1->row[0]) != GetSizeRLERowArray(img2->row[0])) {
+    return 1; // Secondly, check if the size of the arrays of the RLE enconded pictures are different, if so, return 1
   } else {
     for (int i = 0; i < img1->height; i++) {
       for (int j = 0; j < GetSizeRLERowArray(img1->row[0]); j++) {
         if (img1->row[i][j] != img2->row[i][j]) {
-          return 1;
+          return 1; // Check if the contents of the RLE enconded rows are different or not
+                    // and return 1 if any pixel is different
         }
       }
     }
@@ -544,13 +546,23 @@ Image ImageNEG(const Image img) {
 
 Image ImageAND(const Image img1, const Image img2) {
   assert(img1 != NULL && img2 != NULL);
-
-  // COMPLETE THE CODE
-  // You might consider using the UncompressRow and CompressRow auxiliary files
-  // Or devise a more efficient alternative
-  // ...
-
-  return NULL;
+  assert((img1->height == img2->height) && (img1->width == img2->width));
+  uint32 width = img1->width;
+  uint32 height = img1->height;
+  Image newImage = AllocateImageHeader(width, height);
+  for (uint32 i = 0; i < height; i++) {
+    uint8* uncompressedRow_1 = UncompressRow(img1->width, img1->row[i]);
+    uint8* uncompressedRow_2 = UncompressRow(img2->width, img2->row[i]);
+    uint8* new_uncompressedRow = (uint8*)malloc(sizeof(uint8)*img1->width);
+    for (int j = 0; j < img1->width; j++) {
+      new_uncompressedRow[j] = uncompressedRow_1[j]*uncompressedRow_2[j];
+    }
+    newImage->row[i] = CompressRow(newImage->width, new_uncompressedRow);
+    free(uncompressedRow_1);
+    free(uncompressedRow_2);
+    free(new_uncompressedRow);
+  }
+  return newImage;
 }
 
 Image ImageOR(const Image img1, const Image img2) {
