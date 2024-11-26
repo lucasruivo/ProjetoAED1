@@ -503,7 +503,6 @@ int ImageIsEqual(const Image img1, const Image img2) {
       }
     }
   }
-  // COMPLETE THE CODE
   return 0;
 }
 
