@@ -47,8 +47,10 @@ int main(int argc, char* argv[]) {
   ImageRAWPrint(image_3);
   Image image_4 = ImageAND(black_image, image_1);
   ImageRAWPrint(image_4);
-  Image image_5 = ImageAND(chessboard, image_1);
+  Image image_5 = ImageOR(chessboard, image_1);
   ImageRAWPrint(image_5);
+  Image image_6 = ImageOR(white_image, white_image);
+  ImageRAWPrint(image_6);
   
   
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS

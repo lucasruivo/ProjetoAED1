@@ -559,7 +559,7 @@ Image ImageAND(const Image img1, const Image img2) {
     uint8* new_uncompressedRow = (uint8*)malloc(sizeof(uint8)*img1->width);
     for (int j = 0; j < img1->width; j++) {
       // Fill the new uncompressed row with the RAW data equal to 
-      // applying the AND opretation to the two other uncompressed rows
+      // applying the AND operation to the two other uncompressed rows
       new_uncompressedRow[j] = uncompressedRow_1[j]*uncompressedRow_2[j];
     }
     // Compress the RAW row and then store it in newImage, then free all the uncompressed rows
@@ -573,13 +573,35 @@ Image ImageAND(const Image img1, const Image img2) {
 
 Image ImageOR(const Image img1, const Image img2) {
   assert(img1 != NULL && img2 != NULL);
-
-  // COMPLETE THE CODE
-  // You might consider using the UncompressRow and CompressRow auxiliary files
-  // Or devise a more efficient alternative
-  // ...
-
-  return NULL;
+  assert((img1->height == img2->height) && (img1->width == img2->width));
+  // Initialize the image and it's width and height attributes
+  uint32 width = img1->width;
+  uint32 height = img1->height;
+  int value;
+  Image newImage = AllocateImageHeader(width, height);
+  for (uint32 i = 0; i < height; i++) {
+    // Uncompress the rows of the two images and allocate memory for the row
+    // where the results of the OR operation are going to be stored
+    uint8* uncompressedRow_1 = UncompressRow(img1->width, img1->row[i]);
+    uint8* uncompressedRow_2 = UncompressRow(img2->width, img2->row[i]);
+    uint8* new_uncompressedRow = (uint8*)malloc(sizeof(uint8)*img1->width);
+    for (int j = 0; j < img1->width; j++) {
+      // Fill the new uncompressed row with the RAW data equal to 
+      // applying the OR operation to the two other uncompressed rows
+      value = uncompressedRow_1[j]+uncompressedRow_2[j];
+      if (value == 0) {
+        new_uncompressedRow[j] = 0;
+      } else {
+        new_uncompressedRow[j] = 1;
+      }
+    }
+    // Compress the RAW row and then store it in newImage, then free all the uncompressed rows
+    newImage->row[i] = CompressRow(newImage->width, new_uncompressedRow);
+    free(uncompressedRow_1);
+    free(uncompressedRow_2);
+    free(new_uncompressedRow);
+  }
+  return newImage;
 }
 
 Image ImageXOR(Image img1, Image img2) {
