@@ -52,8 +52,13 @@ int main(int argc, char* argv[]) {
   Image image_6 = ImageOR(white_image, white_image);
   ImageRAWPrint(image_6);
   
-  Image image_banana = ImageLoad("banana.pbm");
-  ImageRAWPrint(image_banana);
+  Image image_charmander = ImageLoad("charmander2.pbm");
+  ImageRAWPrint(image_charmander);
+
+
+  Image image_7 = ImageNEG(image_charmander);
+  ImageRAWPrint(image_7);
+
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);
