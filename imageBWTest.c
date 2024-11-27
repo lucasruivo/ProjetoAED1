@@ -103,6 +103,10 @@ int main(int argc, char* argv[]) {
   ImageDestroy(&black_image);
   ImageDestroy(&image_1);
   ImageDestroy(&chessboard);
+  ImageDestroy(&image_3);
+  ImageDestroy(&image_4);
+  ImageDestroy(&image_5);
+  ImageDestroy(&image_6);
 
   /*** UNCOMMENT IF YOU CREATE THOSE IMAGES
 
