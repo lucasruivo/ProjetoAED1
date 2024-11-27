@@ -678,8 +678,19 @@ Image ImageReplicateAtBottom(const Image img1, const Image img2) {
   uint32 new_height = img1->height + img2->height;
 
   Image newImage = AllocateImageHeader(new_width, new_height);
+  for (uint32 i = 0; i < img1->height; i++) {
 
-  // COMPLETE THE CODE
+    newImage->row[i] = img1->row[i];
+
+  }
+  for (uint32 i = img1->height; i < new_height; i++) {
+
+    newImage->row[i] = img2->row[new_height-img1->height];
+
+  }
+
+
+  // COMPLETE THE CODE (N SEI FAZER ESTA M.)
   // ...
 
   return newImage;

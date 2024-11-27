@@ -59,6 +59,9 @@ int main(int argc, char* argv[]) {
   Image image_7 = ImageNEG(image_charmander);
   ImageRAWPrint(image_7);
 
+  Image image_8 = ImageReplicateAtBottom(white_image,black_image);
+  ImageRAWPrint(image_8);
+
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);
