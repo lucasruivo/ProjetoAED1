@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
   printf("The pictures \"black_image\" and \"image_1\" are equal if 0 == %d\n", ImageIsEqual(black_image, image_1));
   printf("The pictures \"black_image\" and \"white_image\" are different if 1 == %d\n\n", ImageIsEqual(black_image, white_image));
 
-  Image image_3 = ImageAND(white_image, image_1);
+  Image image_3 = ImageAND(black_image, image_1);
   ImageRAWPrint(image_3);
   Image image_4 = ImageAND(black_image, image_1);
   ImageRAWPrint(image_4);
@@ -52,7 +52,8 @@ int main(int argc, char* argv[]) {
   Image image_6 = ImageOR(white_image, white_image);
   ImageRAWPrint(image_6);
   
-  
+  Image image_banana = ImageLoad("banana.pbm");
+  ImageRAWPrint(image_banana);
   /*** UNCOMMENT TO TEST THE NEXT FUNCTIONS
 
   Image image_2 = ImageReplicateAtBottom(white_image, black_image);
